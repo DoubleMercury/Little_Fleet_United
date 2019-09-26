@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <title>Little Fleet United!</title>
+</head>
+<style>
+        #headers {
+            font-family: "Open Sans";
+            color: #758692
+        }
+    </style>
+<body>
+    <h1 id="headers" class="is-size-1 has-text-centered">Add a New Car to the Fleet!</h1>
+
+<br>
+            <!--New Car Form-->
+    <div class="block">
+        <div class="control">
+            <label class="label has-text-centered">Car Status</label>
+            <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="car-status" placeholder="Status">
+            <label class="label has-text-centered">Car ID</label>
+            <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="unique-id" placeholder="Unique ID">
+            <label class="label has-text-centered">Car Make</label>
+            <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="car-make" placeholder="Make">
+            <label class="label has-text-centered">Car Model</label>
+            <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="car-model" placeholder="Model">
+            <label class="label has-text-centered">Manufacturing Year</label>
+            <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="car-year" placeholder="Year">
+            <label class="label has-text-centered">Number of Seats</label>
+            <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="seat-number" placeholder="Seats">
+            <label class="label has-text-centered">Price per Day</label>
+            <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="price-per-day" placeholder="PPD">
+        </div>
+                                <br>
+            <div class="block has-text-centered">
+                <button type="submit" id="submitBtn" class="button is-success is-largest is-centered">Submit</button>
+            </div>
+    </div>  
+    
+<!--Home button-->
+    <div class="container has-text-centered">
+            <a href="/">
+                <button class="is-primary is-size-1">
+                  <span class="fa fa-home"></span>
+                  Back to Home
+                </button>
+              </a>
+            </div>
+
+<footer class="footer">
+        <div class="container">
+          <p><a href="/api/fleet">API Fleet Link</a> | <a href="/api/available">API Available Cars</a>
+        </div>
+</footer>
+</body>
+
+<script type="text/javascript">
+    $("#submitBtn").on("click", function(event){
+        event.preventDefault();
+
+        var newCar = {
+            carStatus: $("#car-status").val().trim(),
+            carID: $("#unique-id").val().trim(),
+            carMake: $("#car-make").val().trim(),
+            carModel: $("#car-model").val().trim(),
+            carYear: $("#car-year").val().trim(),
+            seatNumber: $("#seat-number").val().trim(),
+            pricePerDay: $("#price-per-day").val().trim(),
+            
+        };
+        console.log(newCar.carStatus)
+        
+    
+    
+    $.post("/api/fleet", newCar,
+        function (data,status) {
+            if(data) {
+                alert ("Car added to fleet!");
+            }
+                else {
+                    alert("Sorry, something went wrong...");
+                }
+    //Clear form when submitting
+    $("#car-status").val("");
+    $("#unique-id").val("");
+    $("#car-make").val("");
+    $("#car-model").val("");
+    $("#car-year").val("");
+    $("#seat-number").val("");
+    $("#price-per-day").val("");   
+       
+       
+         });
+    });
+</script>
+</html>
