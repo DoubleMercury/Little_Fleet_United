@@ -52,6 +52,16 @@
                 </button>
               </a>
             </div>
+            <br>
+            <!--Fleet button-->
+    <div class="container has-text-centered">
+            <a href="/fleet">
+                <button class="is-info is-size-1">
+                  <span class="fas fa-car"></span>
+                  View Fleet
+                </button>
+              </a>
+            </div>
 
 <footer class="footer">
         <div class="container">
@@ -80,7 +90,7 @@
     
     $.post("/api/fleet", newCar,
         function (data,status) {
-            if(data) {
+            if(data != 'undefined') {
                 alert ("Car added to fleet!");
             }
                 else {

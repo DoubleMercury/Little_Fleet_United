@@ -13,21 +13,27 @@
             font-family: "Open Sans";
             color: #758692
         }
+        .hero {
+            background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60") center/cover;
+        }
+        .column {
+            opacity: 0.75;
+        }
     </style>
 </head>
 <body>
-
+    <section class="hero is-fullheight">
     <!--Rented Column-->
     <div class="columns">
         <div class="column">
-            <h3 id="headers" class="is-size-1 has-text-centered"><strong>Rented Fleet</strong></h3>
+            <h3 id="headers" class="is-size-1 has-text-centered has-background-warning"><strong>Rented Fleet</strong></h3>
                 <div class="box">
                     <ul id="carList" class="list-item"></ul>
                 </div>
         </div>
         <!--Available Column-->
         <div class="column">
-            <h3 id="headers" class="is-size-1 has-text-centered"><strong>Available Cars Only</strong></h3>
+            <h3 id="headers" class="is-size-1 has-text-centered has-background-info"><strong>Available Cars Only</strong></h3>
                 <div class="box">
                     <ul id="availableList" class="list-item"></ul>
                 </div>
@@ -43,6 +49,16 @@
         </button>
       </a>
     </div>
+    <!--Fleet button-->
+    <div class="container has-text-centered">
+            <a href="/addCar">
+                <button class="is-primary is-size-1">
+                  <span class="fas fa-car"></span>
+                  Add Car
+                </button>
+              </a>
+            </div>
+    </section>
     <!--Footer-->
 <footer class="footer">
         <div class="container">

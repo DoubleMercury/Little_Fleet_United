@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,36 +10,56 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>Little Fleet United!</title>
 </head>
+
 <body>
     <style>
-    #title {
-        font-family: "Open Sans";
-        color: #ce0e2d
-    }
-    .hero {
-        background: url(assets/images/fleet.jpg) center/cover;
-    }
-    </style>
-    <section class="hero is-fullheight">
-    <!--Title-->
-    <h1 id="title" class="title is-1 has-text-centered">Little Fleet United</h1>
-        <p class="has-text-centered">E Pluribus Unum</p>
+        #title {
+            font-family: "Open Sans";
+            color: #ce0e2d
+        }
 
-        <br>
+        .hero {
+            background: url("https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60") center/cover;
+        }
+
+
+        #mainTitle {
+            background-color: white;
+            opacity: 0.85;
+            text-shadow: #333 1px 0 10px;
+            padding: 2rem;
+            margin: auto;
+        }
+
+        #mainBody {
+            padding:2rem;
+            margin: auto;
+        }
+    </style>
+
+    <section class="hero is-fullheight">
+        <div id="mainTitle">
+            <!--Title-->
+            <h1 id="title" class="title is-1 has-text-centered">Little Fleet United</h1>
+            <!-- <p class="has-text-centered">E Pluribus Unum</p> -->
+        </div>
+    </section>
+    <div id="mainBody">
         <!--Buttons-->
-            <div class="block has-text-centered">
-                <a href="/fleet"><button class="button is-primary is-largest is-centered">View Fleet</button></a>
-            </div>
-        <br>
-            <div class="block has-text-centered">
-                <a href="/addCar"><button class="button is-danger is-centered">Add Car</button></a>
-            </div>
-<!--Footer-->
-<footer class="footer">
-                <div class="container">
-                  <p><a href="/api/fleet">API Fleet Link</a> | <a href="/api/available">API Available Cars</a>
-                </div>
-              </footer>
-</section>          
+        <div class="block has-text-centered">
+            <a href="/fleet"><button class="button is-primary is-largest is-centered">View Fleet</button></a>
+        </div>
+
+        <div class="block has-text-centered">
+            <a href="/addCar"><button class="button is-danger is-centered">Add Car</button></a>
+        </div>
+    </div>
+    <!--Footer-->
+    <footer class="footer">
+        <div class="container">
+            <p><a href="/api/fleet">API Fleet Link</a> | <a href="/api/available">API Available Cars</a>
+        </div>
+    </footer>
 </body>
+
 </html>
