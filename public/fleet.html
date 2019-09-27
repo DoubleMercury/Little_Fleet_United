@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,115 +14,121 @@
             font-family: "Open Sans";
             color: #758692
         }
+
         .hero {
             background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60") center/cover;
         }
+
         .column {
             opacity: 0.75;
         }
     </style>
 </head>
+
 <body>
     <section class="hero is-fullheight">
-    <!--Rented Column-->
-    <div class="columns">
-        <div class="column">
-            <h3 id="headers" class="is-size-1 has-text-centered has-background-warning"><strong>Rented Fleet</strong></h3>
+        <!--Rented Column-->
+        <div class="columns">
+            <div class="column">
+                <h3 id="headers" class="is-size-1 has-text-centered has-background-warning"><strong>Rented
+                        Fleet</strong></h3>
                 <div class="box">
                     <ul id="carList" class="list-item"></ul>
                 </div>
-        </div>
-        <!--Available Column-->
-        <div class="column">
-            <h3 id="headers" class="is-size-1 has-text-centered has-background-info"><strong>Available Cars Only</strong></h3>
+            </div>
+            <!--Available Column-->
+            <div class="column">
+                <h3 id="headers" class="is-size-1 has-text-centered has-background-info"><strong>Available Cars
+                        Only</strong></h3>
                 <div class="box">
                     <ul id="availableList" class="list-item"></ul>
                 </div>
-        </div>
+            </div>
 
-    </div>
+        </div>
         <!--Home button-->
-<div class="container has-text-centered">
-    <a href="/">
-        <button class="is-primary is-size-1">
-          <span class="fa fa-home"></span>
-          Back to Home
-        </button>
-      </a>
-    </div>
-    <!--Fleet button-->
-    <div class="container has-text-centered">
+        <div class="container has-text-centered">
+            <a href="/">
+                <button class="is-primary is-size-1">
+                    <span class="fa fa-home"></span>
+                    Back to Home
+                </button>
+            </a>
+        </div>
+        <!--Fleet button-->
+        <div class="container has-text-centered">
             <a href="/addCar">
                 <button class="is-primary is-size-1">
-                  <span class="fas fa-car"></span>
-                  Add Car
+                    <span class="fas fa-car"></span>
+                    Add Car
                 </button>
-              </a>
-            </div>
+            </a>
+        </div>
     </section>
     <!--Footer-->
-<footer class="footer">
+    <footer class="footer">
         <div class="container">
-          <p><a href="/api/fleet">API Fleet Link</a> | <a href="/api/available">API Available Cars</a>
-        </div>      
-</footer>
+            <p><a href="/api/fleet">API Fleet Link</a> | <a href="/api/available">API Available Cars</a>
+        </div>
+    </footer>
 </body>
 
 
 
 <script type="text/javascript">
     function runFleetQuery() {
-        
-        $.ajax({url: "/api/fleet", method: "GET"})
-            .then(function(fleetData){
-                
-            for (var i = 0; i < fleetData.length; i++) {
-                var carList = $("#carList");
-                var listItem = $("<li class='list-item'>");
 
-                listItem.append(
-                    $("<h6>").text("Status: " + fleetData[i].carStatus),
-                    $("<hr>"),
-                    $("<h6>").text("ID: " + fleetData[i].carID),
-                    $("<h6>").text("Make: " + fleetData[i].carMake),
-                    $("<h6>").text("Model: " + fleetData[i].carModel),
-                    $("<h6>").text("Year: " + fleetData[i].carYear),
-                    $("<h6>").text("# of Seats: " + fleetData[i].seatNumber),
-                    $("<h6>").text("Price per Day: " + fleetData[i].pricePerDay),
-                    $("<h6>").text("Rented Date From: " + fleetData[i].dateFrom),
-                    $("<h6>").text("Rented Date To: " + fleetData[i].dateTo)    
+        $.ajax({ url: "/api/fleet", method: "GET" })
+            .then(function (fleetData) {
+
+                for (var i = 0; i < fleetData.length; i++) {
+                    var carList = $("#carList");
+                    var listItem = $("<li class='list-item'>");
+
+                    listItem.append(
+                        $("<h6>").text("Status: " + fleetData[i].carStatus),
+                        $("<hr>"),
+                        $("<h6>").text("ID: " + fleetData[i].carID),
+                        $("<h6>").text("Make: " + fleetData[i].carMake),
+                        $("<h6>").text("Model: " + fleetData[i].carModel),
+                        $("<h6>").text("Year: " + fleetData[i].carYear),
+                        $("<h6>").text("# of Seats: " + fleetData[i].seatNumber),
+                        $("<h6>").text("Price per Day: " + fleetData[i].pricePerDay),
+                        $("<h6>").text("Rented Date From: " + fleetData[i].dateFrom),
+                        $("<h6>").text("Rented Date To: " + fleetData[i].dateTo)
                     );
-                carList.append(listItem);
+                    carList.append(listItem);
                 }
             });
     }
 
     function runAvailableQuery() {
-        $.ajax({url: "/api/available", method: "GET"})
+        $.ajax({ url: "/api/available", method: "GET" })
             .then(function (availableData) {
 
-            for (var i=0; i <availableData.length; i++) {
-                var availableList = $("#availableList")
-                var listItem = $("<li class='list-item'>");
+                for (var i = 0; i < availableData.length; i++) {
+                    var availableList = $("#availableList")
+                    var listItem = $("<li class='list-item'>");
 
-                listItem.append(
-                    $("<h6>").text("Status: " + availableData[i].carStatus),
-                    $("<h6>").text("ID: " + availableData[i].carID),
-                    $("<h6>").text("Make: " + availableData[i].carMake),
-                    $("<h6>").text("Model: " + availableData[i].carModel),
-                    $("<h6>").text("Year: " + availableData[i].carYear),
-                    $("<h6>").text("# of Seats: " + availableData[i].seatNumber),
-                    $("<h6>").text("Price per Day: " + availableData[i].pricePerDay),
-                    $("<h6>").text("Rented Date From: " + availableData[i].dateFrom),
-                    $("<h6>").text("Rented Date To: " + availableData[i].dateTo)    
+                    listItem.append(
+                        $("<h6>").text("Status: " + availableData[i].carStatus),
+                        $("<h6>").text("ID: " + availableData[i].carID),
+                        $("<h6>").text("Make: " + availableData[i].carMake),
+                        $("<h6>").text("Model: " + availableData[i].carModel),
+                        $("<h6>").text("Year: " + availableData[i].carYear),
+                        $("<h6>").text("# of Seats: " + availableData[i].seatNumber),
+                        $("<h6>").text("Price per Day: " + availableData[i].pricePerDay),
+                        $("<h6>").text("Rented Date From: " + availableData[i].dateFrom),
+                        $("<h6>").text("Rented Date To: " + availableData[i].dateTo)
                     );
-                availableList.append(listItem);
+                    availableList.append(listItem);
                 }
             });
     }
 
-//Run Queries:
-runFleetQuery();
-runAvailableQuery();
+    //Run Queries:
+    runFleetQuery();
+    runAvailableQuery();
 </script>
+
 </html>

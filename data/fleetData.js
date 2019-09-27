@@ -1,6 +1,6 @@
 var fleetArray = [
     {
-        carStatus: "Rented",
+        carStatus: "rented",
         carID: "Old Blazer",
         carMake: "Chevrolet",
         carModel: "Blazer",

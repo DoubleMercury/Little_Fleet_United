@@ -14,16 +14,16 @@ module.exports = function (app) {
 
 
   app.post("/api/fleet", function (req, res) {
-    console.log("fleetData.carStatus is " + fleetData.carStatus);
-    console.log("req.body.carStatus is " + req.body.carStatus);
-    if (fleetData.carStatus == "rented") {
-      fleetData.push(req, res);
+    if (req.body.carStatus === "available") {
+      availableData.push(req.body);
       res.json(true);
     }
     else {
-      availableData.push(req.body);
+      fleetData.push(req.body);
       res.json(false);
     }
+    // console.log("fleetData.carStatus is " + fleetData.carStatus);
+    // console.log("req.body.carStatus is " + req.body.carStatus);
   });
 
 

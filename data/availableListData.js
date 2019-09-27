@@ -1,6 +1,6 @@
 var availableArray = [
     {
-        carStatus: "Available",
+        carStatus: "available",
         carID: "suv1",
         carMake: "Chevrolet",
         carModel: "Tahoe",
