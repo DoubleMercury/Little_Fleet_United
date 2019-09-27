@@ -25,7 +25,7 @@
     <div class="block">
         <div class="control">
             <label class="label has-text-centered">Car Status</label>
-            <div class="control">
+            <div class="control has-text-centered">
                 <label class="radio">
                     <input type="radio" name="answer" id="car-status" value="rented">
                     Rented
@@ -53,6 +53,12 @@
             <label class="label has-text-centered">Price per Day</label>
             <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="price-per-day"
                 placeholder="PPD">
+            <label class="label has-text-centered">Date Rented From</label>
+                <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="date-from"
+                    placeholder="Rented From">
+            <label class="label has-text-centered">Date Rented To</label>
+                <input class="input has-text-centered column is-half is-offset-one-quarter" type="text" id="date-to"
+                    placeholder="Rented To">
         </div>
         <br>
         <div class="block has-text-centered">
@@ -99,9 +105,10 @@
             carYear: $("#car-year").val().trim(),
             seatNumber: $("#seat-number").val().trim(),
             pricePerDay: $("#price-per-day").val().trim(),
-
+            dateFrom: $("#date-from").val().trim(),
+            dateTo: $("#date-to").val().trim()
         };
-        console.log(newCar.carStatus)
+        
 
 
 
@@ -121,6 +128,8 @@
                 $("#car-year").val("");
                 $("#seat-number").val("");
                 $("#price-per-day").val("");
+                $("#date-from").val("");
+                $("#date-to").val("");
 
 
             });

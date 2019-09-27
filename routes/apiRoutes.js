@@ -22,8 +22,7 @@ module.exports = function (app) {
       fleetData.push(req.body);
       res.json(false);
     }
-    // console.log("fleetData.carStatus is " + fleetData.carStatus);
-    // console.log("req.body.carStatus is " + req.body.carStatus);
+   
   });
 
 

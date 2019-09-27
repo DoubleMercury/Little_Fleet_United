@@ -22,6 +22,9 @@
             background: url("https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60") center/cover;
         }
 
+        #btn {
+            font-family: "Open Sans";
+        }
 
         #mainTitle {
             background-color: white;
@@ -43,17 +46,18 @@
             <h1 id="title" class="title is-1 has-text-centered">Little Fleet United</h1>
             <!-- <p class="has-text-centered">E Pluribus Unum</p> -->
         </div>
-    </section>
+    
     <div id="mainBody">
         <!--Buttons-->
         <div class="block has-text-centered">
-            <a href="/fleet"><button class="button is-primary is-largest is-centered">View Fleet</button></a>
+            <a href="/fleet"><button id="btn" class="button is-primary is-size-1 is-centered">View Fleet</button></a>
         </div>
 
         <div class="block has-text-centered">
-            <a href="/addCar"><button class="button is-danger is-centered">Add Car</button></a>
+            <a href="/addCar"><button id="btn" class="button is-danger is-size-3 is-centered">Add Car</button></a>
         </div>
     </div>
+    </section>  
     <!--Footer-->
     <footer class="footer">
         <div class="container">

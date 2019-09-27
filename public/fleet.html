@@ -33,7 +33,7 @@
                 <h3 id="headers" class="is-size-1 has-text-centered has-background-warning"><strong>Rented
                         Fleet</strong></h3>
                 <div class="box">
-                    <ul id="carList" class="list-item"></ul>
+                    <ul id="rentedList" class="list-item"></ul>
                 </div>
             </div>
             <!--Available Column-->
@@ -55,6 +55,7 @@
                 </button>
             </a>
         </div>
+        <br>
         <!--Fleet button-->
         <div class="container has-text-centered">
             <a href="/addCar">
@@ -64,6 +65,7 @@
                 </button>
             </a>
         </div>
+        <br>
     </section>
     <!--Footer-->
     <footer class="footer">
@@ -82,22 +84,24 @@
             .then(function (fleetData) {
 
                 for (var i = 0; i < fleetData.length; i++) {
-                    var carList = $("#carList");
+                    var rentedList = $("#rentedList");
                     var listItem = $("<li class='list-item'>");
 
                     listItem.append(
-                        $("<h6>").text("Status: " + fleetData[i].carStatus),
-                        $("<hr>"),
-                        $("<h6>").text("ID: " + fleetData[i].carID),
-                        $("<h6>").text("Make: " + fleetData[i].carMake),
-                        $("<h6>").text("Model: " + fleetData[i].carModel),
-                        $("<h6>").text("Year: " + fleetData[i].carYear),
-                        $("<h6>").text("# of Seats: " + fleetData[i].seatNumber),
-                        $("<h6>").text("Price per Day: " + fleetData[i].pricePerDay),
-                        $("<h6>").text("Rented Date From: " + fleetData[i].dateFrom),
-                        $("<h6>").text("Rented Date To: " + fleetData[i].dateTo)
+                        $("<input type='text' id='txt'><button onclick='editLI()'>Edit</button>"),
+                        $("<ul id='list'>"),
+                        $("<li>").text("Status: " + fleetData[i].carStatus),
+                        $("<li>").text("ID: " + fleetData[i].carID),
+                        $("<li>").text("Make: " + fleetData[i].carMake),
+                        $("<li>").text("Model: " + fleetData[i].carModel),
+                        $("<li>").text("Year: " + fleetData[i].carYear),
+                        $("<li>").text("# of Seats: " + fleetData[i].seatNumber),
+                        $("<li>").text("Price per Day: " + fleetData[i].pricePerDay),
+                        $("<li>").text("Rented Date From: " + fleetData[i].dateFrom),
+                        $("<li>").text("Rented Date To: " + fleetData[i].dateTo),
+                            
                     );
-                    carList.append(listItem);
+                    rentedList.append(listItem);
                 }
             });
     }
@@ -111,21 +115,60 @@
                     var listItem = $("<li class='list-item'>");
 
                     listItem.append(
-                        $("<h6>").text("Status: " + availableData[i].carStatus),
-                        $("<h6>").text("ID: " + availableData[i].carID),
-                        $("<h6>").text("Make: " + availableData[i].carMake),
-                        $("<h6>").text("Model: " + availableData[i].carModel),
-                        $("<h6>").text("Year: " + availableData[i].carYear),
-                        $("<h6>").text("# of Seats: " + availableData[i].seatNumber),
-                        $("<h6>").text("Price per Day: " + availableData[i].pricePerDay),
-                        $("<h6>").text("Rented Date From: " + availableData[i].dateFrom),
-                        $("<h6>").text("Rented Date To: " + availableData[i].dateTo)
+                        $("<input type='text' id='txt'><button onclick='editLI()'>Edit</button>"),
+                        $("<ul id='list'>"),
+                        $("<li>").text("Status: " + availableData[i].carStatus),
+                        $("<li>").text("ID: " + availableData[i].carID),
+                        $("<li>").text("Make: " + availableData[i].carMake),
+                        $("<li>").text("Model: " + availableData[i].carModel),
+                        $("<li>").text("Year: " + availableData[i].carYear),
+                        $("<li>").text("# of Seats: " + availableData[i].seatNumber),
+                        $("<li>").text("Price per Day: " + availableData[i].pricePerDay),
+                        $("<li>").text("Rented Date From: " + availableData[i].dateFrom),
+                        $("<li>").text("Rented Date To: " + availableData[i].dateTo)
                     );
                     availableList.append(listItem);
                 }
             });
     }
+//Edit function starts here
+//================================
+    //trying to work around the "cannot read value property of null"
+    var inputVal = "";
+    if (inputText) {
+        inputVal = inputText.value;
+    }
+    
+    var items = document.querySelectorAll("#list"),
+        inputText = document.getElementById("txt"),
+        tab = [], liIndex;
+    
+    
+    
+        //populate tab with li value
+    for (var i = 0; i < items.length; i++) {
+        tab.push(items[i].innerHTML);
+    }
+        //get selected li into text fields and get the index
 
+    for(var i = 0; i < items.length; i ++) {
+        items[i].onclick = function() {
+            inputText.value = this.innerHTML;
+            liIndex = tab.indexOf(this.innerHTML);
+            console.log(this.innerHTML + " INDEX = " + liIndex);
+        };
+    }
+
+    function editLI() {
+        items[liIndex].innerHTML = inputText.value;
+            //clear array
+            tab.length = 0;
+            // fill array
+        for(var i = 0; i < items.length; i++) {
+            tab.push(items[i].innerHTML);
+        }
+    }
+//=================================================
     //Run Queries:
     runFleetQuery();
     runAvailableQuery();
